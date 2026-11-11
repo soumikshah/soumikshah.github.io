@@ -68,25 +68,30 @@
       .catch(function () { /* offline or rate limited: the HTML numbers stand */ });
   }
 
-  /* Email: assembled from data attributes on the first real interaction, so the address never sits in the HTML
-     and scrapers that only fetch or render the page without interacting do not see it. */
+  /* Email: the address is never in the HTML. It is assembled from data attributes only when a visitor acts on the
+     button itself (pointer down, keyboard focus or click), so scrapers that fetch, render or even scroll the page
+     never see it. The readable text appears only after a deliberate "Show address" click. */
   var emailLink = document.getElementById('email-link');
   if (emailLink) {
     var emailText = document.getElementById('email-text');
-    var revealed = false;
-    var reveal = function () {
-      if (revealed) return true;
-      var addr = emailLink.getAttribute('data-u') + String.fromCharCode(64) + emailLink.getAttribute('data-d') + '.' + emailLink.getAttribute('data-t');
-      emailLink.setAttribute('href', 'mailto:' + addr);
-      if (emailText) emailText.textContent = addr;
-      revealed = true;
-      return true;
+    var emailShow = document.getElementById('email-show');
+    var address = function () {
+      return emailLink.getAttribute('data-u') + String.fromCharCode(64) + emailLink.getAttribute('data-d') + '.' + emailLink.getAttribute('data-t');
     };
-    ['pointerdown', 'keydown', 'touchstart', 'scroll', 'mousemove'].forEach(function (ev) {
-      window.addEventListener(ev, function onFirst() { reveal(); window.removeEventListener(ev, onFirst); }, { passive: true });
+    var arm = function () { if (emailLink.getAttribute('href').indexOf('mailto:') !== 0) emailLink.setAttribute('href', 'mailto:' + address()); };
+    emailLink.addEventListener('pointerdown', arm);
+    emailLink.addEventListener('focus', arm);
+    emailLink.addEventListener('click', function (e) {
+      arm();
+      if (emailLink.getAttribute('href').indexOf('mailto:') !== 0) { e.preventDefault(); window.location.href = 'mailto:' + address(); }
     });
-    emailLink.addEventListener('click', reveal);
-    emailLink.addEventListener('focus', reveal);
+    if (emailShow && emailText) {
+      emailShow.addEventListener('click', function () {
+        emailText.textContent = address();
+        emailShow.hidden = true;
+        emailText.focus();
+      });
+    }
   }
 
   /* Footer year */

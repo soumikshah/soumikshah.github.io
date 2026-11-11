@@ -347,10 +347,11 @@
     <p class="sh-index label" style="margin:0 0 var(--space-3)">04 / Contact</p>
     <h2 class="foot-title" id="contact-title">Say hello</h2>
     <p class="foot-lede">Open to senior Android roles and interesting side projects. Email is fastest.</p>
-    <!-- The address is never written in the HTML: js/site.js assembles it from these parts on the first real interaction. -->
+    <!-- The address is never written in the HTML: js/site.js assembles it from these parts only when the visitor acts on the button. -->
     <p class="foot-email">
       <a class="btn btn-primary" id="email-link" href="#contact" data-u="me" data-d="soumikshah" data-t="com" rel="nofollow"><svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg><span>Email me</span></a>
-      <span class="foot-email-text numeral" id="email-text"></span>
+      <button class="btn btn-ghost btn-sm" type="button" id="email-show">Show address</button>
+      <span class="foot-email-text numeral" id="email-text" tabindex="-1"></span>
       <noscript><span class="foot-email-text numeral">me [at] soumikshah [dot] com</span></noscript>
     </p>
     <ul class="foot-links">

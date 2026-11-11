@@ -34,6 +34,6 @@ Netlify, Cloudflare Pages or Vercel work the same way: deploy the folder as-is, 
 
 ## Before going live
 
-- The email address is never written in the HTML. `index.html` holds it as three `data-` parts on the "Email me" button and `js/site.js` assembles the `mailto:` on the first real interaction (pointer, key, touch or scroll), with a `[at] [dot]` fallback for readers without JavaScript. To change it, edit the `data-u`, `data-d` and `data-t` attributes.
+- The email address is never written in the HTML. `index.html` holds it as three `data-` parts on the "Email me" button and `js/site.js` assembles the `mailto:` only when a visitor presses, focuses or clicks that button, and shows the readable address only after a "Show address" click, with a `[at] [dot]` fallback for readers without JavaScript. Scrapers that fetch, render or scroll the page never see it; only a bot that deliberately clicks the button would. To change it, edit the `data-u`, `data-d` and `data-t` attributes.
 - The Résumé button is commented out in the hero. Drop the PDF into `assets/` and uncomment that block.
 - Star and fork counts are refreshed from the GitHub API on load; the numbers in the HTML are the fallback and were correct on 10 Nov 2026.
