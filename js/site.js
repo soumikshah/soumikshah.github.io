@@ -68,6 +68,27 @@
       .catch(function () { /* offline or rate limited: the HTML numbers stand */ });
   }
 
+  /* Email: assembled from data attributes on the first real interaction, so the address never sits in the HTML
+     and scrapers that only fetch or render the page without interacting do not see it. */
+  var emailLink = document.getElementById('email-link');
+  if (emailLink) {
+    var emailText = document.getElementById('email-text');
+    var revealed = false;
+    var reveal = function () {
+      if (revealed) return true;
+      var addr = emailLink.getAttribute('data-u') + String.fromCharCode(64) + emailLink.getAttribute('data-d') + '.' + emailLink.getAttribute('data-t');
+      emailLink.setAttribute('href', 'mailto:' + addr);
+      if (emailText) emailText.textContent = addr;
+      revealed = true;
+      return true;
+    };
+    ['pointerdown', 'keydown', 'touchstart', 'scroll', 'mousemove'].forEach(function (ev) {
+      window.addEventListener(ev, function onFirst() { reveal(); window.removeEventListener(ev, onFirst); }, { passive: true });
+    });
+    emailLink.addEventListener('click', reveal);
+    emailLink.addEventListener('focus', reveal);
+  }
+
   /* Footer year */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());

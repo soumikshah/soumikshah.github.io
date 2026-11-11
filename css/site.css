@@ -119,6 +119,9 @@ a { color: var(--link); }
 .foot { background: var(--surface-sunken); border-top: 1px solid var(--line); padding: var(--space-16) 0 var(--space-8); }
 .foot-title { margin: 0; font: 700 28px/34px var(--font-display); letter-spacing: -.01em; color: var(--ink); }
 .foot-lede { margin: var(--space-3) 0 var(--space-6); max-width: var(--measure); color: var(--ink-muted); }
+.foot-email { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); margin: 0; }
+.foot-email-text { color: var(--ink-muted); }
+.foot-email-text:empty { display: none; }
 .foot-links { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-6) 0 0; padding: 0; list-style: none; }
 .foot-small { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); margin-top: var(--space-16); padding-top: var(--space-4); border-top: 1px solid var(--line); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
 .foot-small a { color: inherit; }

@@ -34,6 +34,6 @@ Netlify, Cloudflare Pages or Vercel work the same way: deploy the folder as-is, 
 
 ## Before going live
 
-- Put the real email address in the "Email me" link in `index.html` (search for `mailto:`); the current one is a placeholder.
-- Confirm the Résumé button's target (`https://bit.ly/340pE2j`, carried over from the Carrd page) is the current résumé, or swap in a PDF hosted in this repository.
+- The email address is never written in the HTML. `index.html` holds it as three `data-` parts on the "Email me" button and `js/site.js` assembles the `mailto:` on the first real interaction (pointer, key, touch or scroll), with a `[at] [dot]` fallback for readers without JavaScript. To change it, edit the `data-u`, `data-d` and `data-t` attributes.
+- The Résumé button is commented out in the hero. Drop the PDF into `assets/` and uncomment that block.
 - Star and fork counts are refreshed from the GitHub API on load; the numbers in the HTML are the fallback and were correct on 10 Nov 2026.

@@ -108,7 +108,9 @@
       <div class="hero-actions">
         <a class="btn btn-primary btn-block" href="#projects"><span>See projects</span></a>
         <a class="btn btn-quiet btn-block" href="https://www.linkedin.com/in/soumikshah/" target="_blank" rel="noreferrer"><span>LinkedIn</span><svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-quiet btn-block" href="https://bit.ly/340pE2j" target="_blank" rel="noreferrer"><svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-download"/></svg><span>Résumé</span></a>
+        <!-- Résumé button: restore once the PDF is in the repo, e.g. at assets/soumik-shah-resume.pdf
+        <a class="btn btn-quiet btn-block" href="assets/soumik-shah-resume.pdf" target="_blank" rel="noreferrer"><svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-download"/></svg><span>Résumé</span></a>
+        -->
       </div>
     </div>
   </div>
@@ -345,7 +347,12 @@
     <p class="sh-index label" style="margin:0 0 var(--space-3)">04 / Contact</p>
     <h2 class="foot-title" id="contact-title">Say hello</h2>
     <p class="foot-lede">Open to senior Android roles and interesting side projects. Email is fastest.</p>
-    <a class="btn btn-primary" href="mailto:hello@soumikshah.com"><svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg><span>Email me</span></a>
+    <!-- The address is never written in the HTML: js/site.js assembles it from these parts on the first real interaction. -->
+    <p class="foot-email">
+      <a class="btn btn-primary" id="email-link" href="#contact" data-u="me" data-d="soumikshah" data-t="com" rel="nofollow"><svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg><span>Email me</span></a>
+      <span class="foot-email-text numeral" id="email-text"></span>
+      <noscript><span class="foot-email-text numeral">me [at] soumikshah [dot] com</span></noscript>
+    </p>
     <ul class="foot-links">
       <li><a class="btn btn-quiet btn-sm" href="https://github.com/soumikshah" target="_blank" rel="noreferrer"><span>GitHub</span><svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a></li>
       <li><a class="btn btn-quiet btn-sm" href="https://www.linkedin.com/in/soumikshah/" target="_blank" rel="noreferrer"><span>LinkedIn</span><svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a></li>
